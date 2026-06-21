@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#153145" />
+    <title>Everchanging — Care records that move with you.</title>
+    <meta
+      name="description"
+      content="Everchanging is a demonstration digital social care record for UK care teams."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#overview" aria-label="Everchanging home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>ever<span>changing</span></span>
+        </a>
+
+        <div class="home-switcher">
+          <span class="home-icon">⌂</span>
+          <span><strong>Willow House</strong><small>Leeds · 24 people</small></span>
+          <span class="chevron">⌄</span>
+        </div>
+
+        <nav class="nav-list">
+          <a class="nav-link active" href="#overview" data-view="overview"><span class="nav-icon">⌘</span>Overview</a>
+          <a class="nav-link" href="#people" data-view="people"><span class="nav-icon">♙</span>People</a>
+          <a class="nav-link" href="#care-plans" data-view="care-plans"><span class="nav-icon">♡</span>Care plans</a>
+          <a class="nav-link" href="#daily-notes" data-view="daily-notes"><span class="nav-icon">▤</span>Daily notes</a>
+          <a class="nav-link" href="#medicines" data-view="medicines"><span class="nav-icon">✦</span>Medicines</a>
+          <a class="nav-link" href="#tasks" data-view="tasks"><span class="nav-icon">✓</span>Tasks <b class="nav-count">6</b></a>
+          <a class="nav-link" href="#reports" data-view="reports"><span class="nav-icon">◌</span>Reports</a>
+        </nav>
+
+        <div class="sidebar-foot">
+          <a class="nav-link" href="#help" data-view="help"><span class="nav-icon">?</span>Help centre</a>
+          <button class="profile" type="button" aria-label="Open Eleanor's account menu">
+            <span class="avatar avatar-small">EO</span>
+            <span><strong>Eleanor Owen</strong><small>Registered Manager</small></span>
+            <span class="more">•••</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu" type="button" aria-label="Open navigation">☰</button>
+          <div class="crumb"><span id="page-eyebrow">Monday, 21 June</span><h1 id="page-title">Good morning, Eleanor</h1></div>
+          <div class="top-actions">
+            <label class="search"><span>⌕</span><input id="global-search" type="search" placeholder="Search people, notes and more" /></label>
+            <button class="icon-button" type="button" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+            <button class="add-button" id="quick-add" type="button"><span>+</span> Add record</button>
+          </div>
+        </header>
+
+        <section class="view active" id="overview" data-view-panel="overview">
+          <div class="welcome-row">
+            <div>
+              <p class="eyebrow">Willow House · Morning shift</p>
+              <h2>Everything’s in hand.</h2>
+              <p class="lede">Here’s how the home is looking at 10:42 today.</p>
+            </div>
+            <button class="handover-button" type="button" data-toast="Handover summary prepared for you."><span>↗</span> View handover</button>
+          </div>
+
+          <div class="metrics-grid" aria-label="Today at a glance">
+            <article class="metric-card mint">
+              <span class="metric-icon">♙</span><p>People supported today</p><strong>24</strong><small><span class="up">↑ 2</span> from last week</small>
+            </article>
+            <article class="metric-card sunshine">
+              <span class="metric-icon">✓</span><p>Care tasks completed</p><strong>87<span>%</span></strong><small>78 of 90 actions complete</small>
+            </article>
+            <article class="metric-card coral">
+              <span class="metric-icon">!</span><p>Needs your attention</p><strong>3</strong><small>2 reviews · 1 observation</small>
+            </article>
+            <article class="metric-card lavender">
+              <span class="metric-icon">✦</span><p>Medicines due</p><strong>5</strong><small>Next round at 12:00</small>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel handover-panel">
+              <div class="panel-head">
+                <div><p class="eyebrow">Shift handover</p><h3>Keep the day moving</h3></div>
+                <button class="text-button" type="button" data-view-target="daily-notes">See all notes <span>→</span></button>
+              </div>
+              <div class="handover-list">
+                <article class="handover-item alert">
+                  <span class="status-icon">!</span>
+                  <div><div class="item-line"><h4>Priya Shah</h4><span class="tag urgent">Review due</span></div><p>Skin integrity assessment needs review before end of day.</p></div>
+                  <button class="circle-button" type="button" aria-label="Open Priya Shah's record" data-toast="Opening Priya Shah’s review.">→</button>
+                </article>
+                <article class="handover-item">
+                  <span class="status-icon peach">☀</span>
+                  <div><div class="item-line"><h4>Arthur Bennett</h4><span class="tag calm">Settled</span></div><p>Slept well. Enjoyed breakfast and morning newspaper.</p></div>
+                  <button class="circle-button" type="button" aria-label="Open Arthur Bennett's record" data-toast="Opening Arthur Bennett’s daily record.">→</button>
+                </article>
+                <article class="handover-item">
+                  <span class="status-icon lavender-bg">↗</span>
+                  <div><div class="item-line"><h4>Rosemary Ellis</h4><span class="tag neutral">Family update</span></div><p>Daughter visiting at 14:30. Please share mobility progress.</p></div>
+                  <button class="circle-button" type="button" aria-label="Open Rosemary Ellis's record" data-toast="Opening Rosemary Ellis’s daily record.">→</button>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel tasks-panel">
+              <div class="panel-head"><div><p class="eyebrow">My actions</p><h3>Priority tasks</h3></div><span class="pill">6 open</span></div>
+              <div class="task-list" id="overview-tasks">
+                <label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Review Priya’s skin integrity plan</strong><small>Due today · Care plan review</small></span><span class="task-time red">Overdue</span></label>
+                <label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Record lunchtime observations</strong><small>Due 12:30 · All residents</small></span><span class="task-time">1h 48m</span></label>
+                <label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Check MAR exceptions</strong><small>Due 13:00 · Medicines</small></span><span class="task-time">2h 18m</span></label>
+                <label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Call Dr Patel re: Arthur’s prescription</strong><small>Due today · Follow-up</small></span><span class="task-time">Today</span></label>
+              </div>
+              <button class="wide-text-button" type="button" data-view-target="tasks">View all tasks <span>→</span></button>
+            </section>
+          </div>
+
+          <section class="panel timeline-panel">
+            <div class="panel-head"><div><p class="eyebrow">Live activity</p><h3>This morning at Willow House</h3></div><button class="text-button" type="button" data-view-target="daily-notes">Open daily notes <span>→</span></button></div>
+            <div class="timeline">
+              <article><span class="avatar teal">AK</span><div><p><strong>Amina Khan</strong> recorded a mood observation for <strong>Rosemary Ellis</strong></p><small>10:36 · “Bright and chatty after garden walk”</small></div><time>6 min ago</time></article>
+              <article><span class="avatar purple">JM</span><div><p><strong>James McCarthy</strong> completed morning medicines round</p><small>10:12 · 23 of 24 administered</small></div><time>30 min ago</time></article>
+              <article><span class="avatar peach-avatar">SL</span><div><p><strong>Sofia Lewis</strong> updated <strong>Arthur Bennett’s</strong> mobility plan</p><small>09:48 · Goal review added</small></div><time>54 min ago</time></article>
+            </div>
+          </section>
+        </section>
+
+        <section class="view" id="people" data-view-panel="people">
+          <div class="page-intro"><div><p class="eyebrow">People</p><h2>Everyone at Willow House</h2><p class="lede">A calm, current picture of each person’s care.</p></div><button class="add-button" type="button" data-toast="New person form opened."><span>+</span> Add person</button></div>
+          <div class="people-toolbar"><label class="search large"><span>⌕</span><input type="search" placeholder="Find a person" data-people-search /></label><button class="filter-button" type="button">⌄ All floors</button><button class="filter-button" type="button">⌄ All statuses</button></div>
+          <div class="people-grid" id="people-list">
+            <article class="person-card" data-person="Arthur Bennett"><span class="person-photo arthur">AB</span><div><h3>Arthur Bennett</h3><p>Willow · Room 12</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Next: GP follow-up</span><button type="button" data-toast="Opening Arthur Bennett’s record.">Open →</button></div></article>
+            <article class="person-card" data-person="Priya Shah"><span class="person-photo priya">PS</span><div><h3>Priya Shah</h3><p>Willow · Room 14</p></div><span class="person-status review">Review due</span><div class="person-footer"><span>Skin integrity review</span><button type="button" data-toast="Opening Priya Shah’s record.">Open →</button></div></article>
+            <article class="person-card" data-person="Rosemary Ellis"><span class="person-photo rosemary">RE</span><div><h3>Rosemary Ellis</h3><p>Maple · Room 03</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Family visit at 14:30</span><button type="button" data-toast="Opening Rosemary Ellis’s record.">Open →</button></div></article>
+            <article class="person-card" data-person="Douglas Ward"><span class="person-photo douglas">DW</span><div><h3>Douglas Ward</h3><p>Maple · Room 07</p></div><span class="person-status watch">Observe</span><div class="person-footer"><span>Fluid intake observation</span><button type="button" data-toast="Opening Douglas Ward’s record.">Open →</button></div></article>
+            <article class="person-card" data-person="Mabel Hart"><span class="person-photo mabel">MH</span><div><h3>Mabel Hart</h3><p>Willow · Room 09</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Next: activity at 11:30</span><button type="button" data-toast="Opening Mabel Hart’s record.">Open →</button></div></article>
+            <article class="person-card" data-person="George Kelly"><span class="person-photo george">GK</span><div><h3>George Kelly</h3><p>Maple · Room 11</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Care plan reviewed 18 Jun</span><button type="button" data-toast="Opening George Kelly’s record.">Open →</button></div></article>
+          </div>
+        </section>
+
+        <section class="view" id="care-plans" data-view-panel="care-plans">
+          <div class="page-intro"><div><p class="eyebrow">Care plans</p><h2>Person-led plans, kept current</h2><p class="lede">Goals, needs and actions in one shared, auditable place.</p></div><button class="add-button" type="button" data-toast="New care plan template started."><span>+</span> New plan</button></div>
+          <div class="plans-layout"><section class="panel"><div class="panel-head"><div><h3>Plans needing review</h3><p class="subtle">3 plans this week</p></div><span class="pill coral-pill">3 due</span></div><div class="plan-list"><article><span class="plan-icon">♡</span><div><h4>Skin integrity &amp; pressure care</h4><p>Priya Shah · Due today</p></div><span class="tag urgent">Urgent</span><button type="button" class="circle-button" data-toast="Opening Priya’s skin integrity plan.">→</button></article><article><span class="plan-icon mint-icon">⌁</span><div><h4>Mobility &amp; independence</h4><p>Arthur Bennett · Due 23 Jun</p></div><span class="tag neutral">In 2 days</span><button type="button" class="circle-button" data-toast="Opening Arthur’s mobility plan.">→</button></article><article><span class="plan-icon lavender-icon">☼</span><div><h4>Meaningful activity</h4><p>Rosemary Ellis · Due 25 Jun</p></div><span class="tag neutral">In 4 days</span><button type="button" class="circle-button" data-toast="Opening Rosemary’s activity plan.">→</button></article></div></section><aside class="goal-card"><p class="eyebrow">Care that changes with life</p><h3>Every plan starts with what matters to the person.</h3><p>Capture strengths, aspirations and the practical support that helps someone thrive.</p><button class="light-button" type="button" data-toast="Opening the person-centred plan template.">Explore templates →</button></aside></div>
+        </section>
+
+        <section class="view" id="daily-notes" data-view-panel="daily-notes">
+          <div class="page-intro"><div><p class="eyebrow">Daily notes</p><h2>Today’s story, told clearly</h2><p class="lede">Real-time notes, observations and meaningful moments.</p></div><button class="add-button" type="button" id="new-note"><span>+</span> Add note</button></div>
+          <div class="notes-layout"><section class="panel notes-feed"><div class="feed-filter"><button class="filter-chip active" type="button">All activity</button><button class="filter-chip" type="button">Observations</button><button class="filter-chip" type="button">Notes</button></div><div class="day-heading"><span>Today</span></div><article class="note-card"><span class="avatar teal">AK</span><div><div class="note-top"><h3>Rosemary Ellis <span>· Mood observation</span></h3><time>10:36</time></div><p>Rosemary was bright and chatty after her garden walk. She chose to water the tomatoes and spoke warmly about her own garden.</p><small>Added by Amina Khan · Linked to meaningful activity plan</small></div></article><article class="note-card"><span class="avatar purple">JM</span><div><div class="note-top"><h3>Medicines round <span>· Completed</span></h3><time>10:12</time></div><p>Morning medicines round complete. Arthur’s prescription query has been added to handover.</p><small>Added by James McCarthy · 23 people supported</small></div></article><article class="note-card"><span class="avatar peach-avatar">SL</span><div><div class="note-top"><h3>Arthur Bennett <span>· Care note</span></h3><time>09:48</time></div><p>Arthur walked independently to the dining room using his frame. He said he feels more confident after his exercises.</p><small>Added by Sofia Lewis · Linked to mobility plan</small></div></article></section><aside class="panel note-side"><p class="eyebrow">At a glance</p><h3>Notes today</h3><div class="note-stat"><strong>37</strong><span>recorded this morning</span></div><div class="note-breakdown"><p><span class="dot teal-dot"></span> 18 care notes</p><p><span class="dot yellow-dot"></span> 12 observations</p><p><span class="dot purple-dot"></span> 7 family updates</p></div></aside></div>
+        </section>
+
+        <section class="view" id="medicines" data-view-panel="medicines">
+          <div class="page-intro"><div><p class="eyebrow">Medicines</p><h2>Safe, clear medication support</h2><p class="lede">A focused view of today’s electronic MAR.</p></div><button class="add-button" type="button" data-toast="Medicine administration record opened."><span>↗</span> Open eMAR</button></div>
+          <section class="panel medication-panel"><div class="medication-header"><div><h3>Midday medicines round</h3><p>Due at 12:00 · 5 administrations</p></div><span class="med-clock">01:18:24</span></div><div class="mar-list"><article><span class="person-photo arthur tiny">AB</span><div><h4>Arthur Bennett</h4><p>Paracetamol · 1g oral</p></div><span class="tag calm">Due 12:00</span><button type="button" class="outline-button" data-toast="Arthur’s MAR record opened.">Record</button></article><article><span class="person-photo rosemary tiny">RE</span><div><h4>Rosemary Ellis</h4><p>Co-careldopa · 125mg oral</p></div><span class="tag calm">Due 12:00</span><button type="button" class="outline-button" data-toast="Rosemary’s MAR record opened.">Record</button></article><article><span class="person-photo mabel tiny">MH</span><div><h4>Mabel Hart</h4><p>Omeprazole · 20mg oral</p></div><span class="tag calm">Due 12:00</span><button type="button" class="outline-button" data-toast="Mabel’s MAR record opened.">Record</button></article></div></section>
+        </section>
+
+        <section class="view" id="tasks" data-view-panel="tasks">
+          <div class="page-intro"><div><p class="eyebrow">Tasks</p><h2>Small actions. Better days.</h2><p class="lede">Keep the right care action moving at the right time.</p></div><button class="add-button" type="button" data-toast="New task created."><span>+</span> Add task</button></div>
+          <section class="panel full-task-panel"><div class="task-tabs"><button class="filter-chip active" type="button">My tasks <b>6</b></button><button class="filter-chip" type="button">Home tasks <b>12</b></button><button class="filter-chip" type="button">Completed</button></div><div class="task-list spacious" id="all-tasks"><label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Review Priya’s skin integrity plan</strong><small>Priya Shah · Care plan review · Due today</small></span><span class="task-time red">Overdue</span></label><label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Record lunchtime observations</strong><small>All people · Observation · Due 12:30</small></span><span class="task-time">1h 48m</span></label><label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Check MAR exceptions</strong><small>Medicines · Due 13:00</small></span><span class="task-time">2h 18m</span></label><label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Call Dr Patel re: Arthur’s prescription</strong><small>Arthur Bennett · Follow-up · Due today</small></span><span class="task-time">Today</span></label><label class="task-row"><input type="checkbox" /><span class="checkbox"></span><span><strong>Confirm Rosemary’s family visit</strong><small>Rosemary Ellis · Family update · Due 14:00</small></span><span class="task-time">3h 18m</span></label></div></section>
+        </section>
+
+        <section class="view" id="reports" data-view-panel="reports">
+          <div class="page-intro"><div><p class="eyebrow">Reports</p><h2>Useful insight, without the noise</h2><p class="lede">See patterns that help your team deliver outstanding care.</p></div><button class="add-button" type="button" data-toast="Report builder opened."><span>+</span> Create report</button></div>
+          <div class="report-grid"><section class="panel report-card"><p class="eyebrow">Care plan reviews</p><h3>92<span>%</span></h3><p>Up to date across Willow House</p><div class="progress"><i style="width: 92%"></i></div><small>22 of 24 people have current plans</small></section><section class="panel report-card"><p class="eyebrow">Tasks on time</p><h3>87<span>%</span></h3><p>Completed within their planned window</p><div class="progress yellow"><i style="width: 87%"></i></div><small>78 of 90 tasks completed today</small></section><section class="panel report-card"><p class="eyebrow">Meaningful moments</p><h3>18</h3><p>Activities and preferences recorded this week</p><div class="sparkline"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>Up 20% on last week</small></section></div>
+        </section>
+
+        <section class="view simple-view" id="help" data-view-panel="help"><p class="eyebrow">Help centre</p><h2>How can we help?</h2><p class="lede">This demonstration keeps the essentials beautifully simple.</p><button class="add-button" type="button" data-toast="Support is on its way.">Contact support</button></section>
+      </main>
+    </div>
+
+    <dialog class="record-dialog" id="record-dialog">
+      <form method="dialog" class="dialog-card" id="note-form">
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+        <p class="eyebrow">New daily note</p>
+        <h2>Capture a meaningful moment</h2>
+        <label>Person<select><option>Rosemary Ellis</option><option>Arthur Bennett</option><option>Priya Shah</option></select></label>
+        <label>Note<textarea required placeholder="What happened? What matters next?"></textarea></label>
+        <label class="check-label"><input type="checkbox" /> Link to an existing care plan</label>
+        <button class="add-button" value="default">Save note</button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
