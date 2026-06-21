@@ -13,6 +13,7 @@
   --purple: #7256a5;
   --navy: #173447;
   --shadow: 0 12px 35px rgba(24, 50, 70, 0.06);
+  --sidebar-width: 252px;
   font-family: "DM Sans", Arial, sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -25,7 +26,7 @@ button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 
 .app-shell { min-height: 100vh; display: flex; }
-.sidebar { position: fixed; inset: 0 auto 0 0; z-index: 4; display: flex; flex-direction: column; width: 252px; padding: 26px 16px 17px; color: #dce9ed; background: var(--navy); }
+.sidebar { position: fixed; inset: 0 auto 0 0; z-index: 4; display: flex; flex-direction: column; width: var(--sidebar-width); padding: 26px 16px 17px; color: #dce9ed; background: var(--navy); }
 .brand { display: inline-flex; gap: 10px; align-items: center; margin: 0 12px 33px; color: #fff; font-family: Fraunces, Georgia, serif; font-size: 20px; font-weight: 700; letter-spacing: -1px; text-decoration: none; }
 .brand > span:last-child span { color: #9dd9c4; }
 .brand-mark { position: relative; display: inline-flex; align-items: end; gap: 2px; width: 20px; height: 23px; }
@@ -52,7 +53,7 @@ button { cursor: pointer; }
 .profile small { margin-top: 2px; color: #aebec5; font-size: 9px; }
 .profile .more { margin-left: auto; color: #aebec5; letter-spacing: 1px; }
 
-.main-content { width: calc(100% - 252px); margin-left: 252px; padding: 0 38px 45px; }
+.main-content { width: calc(100% - var(--sidebar-width)); margin-left: var(--sidebar-width); padding: 0 38px 45px; }
 .topbar { display: flex; min-height: 106px; align-items: center; justify-content: space-between; gap: 25px; border-bottom: 1px solid var(--line); }
 .crumb { line-height: 1.15; }
 .crumb span { display: block; margin-bottom: 5px; color: var(--ink-soft); font-size: 11px; font-weight: 600; }
@@ -103,6 +104,151 @@ h2 { margin: 0; font-family: Fraunces, Georgia, serif; font-size: 30px; line-hei
 .full-task-panel { max-width: 900px; }.full-task-panel .task-row { padding: 16px 0; }.full-task-panel .task-row strong { font-size: 11px; }.full-task-panel .task-row small { font-size: 10px; }.spacious { padding-bottom: 12px; }.report-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 17px; }.report-card { min-height: 205px; padding: 22px; }.report-card h3 { margin: 19px 0 6px; font-family: Fraunces, Georgia, serif; font-size: 41px; line-height: .9; }.report-card h3 span { font-size: 21px; }.report-card > p:not(.eyebrow) { margin: 0; color: #64747b; font-size: 11px; }.report-card small { display: block; margin-top: 9px; color: #829096; font-size: 9px; }.progress { height: 7px; margin-top: 20px; overflow: hidden; border-radius: 5px; background: #e5efeb; }.progress i { display: block; height: 100%; border-radius: inherit; background: #4c9d86; }.progress.yellow { background: #fff0c6; }.progress.yellow i { background: #e7b449; }.sparkline { display: flex; height: 27px; gap: 5px; align-items: end; margin-top: 13px; }.sparkline i { width: 9px; border-radius: 5px 5px 1px 1px; background: #7b67a8; }.sparkline i:nth-child(1) { height: 10px; }.sparkline i:nth-child(2) { height: 16px; }.sparkline i:nth-child(3) { height: 13px; }.sparkline i:nth-child(4) { height: 22px; }.sparkline i:nth-child(5) { height: 18px; }.sparkline i:nth-child(6) { height: 25px; }.sparkline i:nth-child(7) { height: 20px; }.simple-view { min-height: 300px; }.simple-view .add-button { margin-top: 22px; }
 
 .record-dialog { width: min(92vw, 470px); padding: 0; border: 0; border-radius: 15px; box-shadow: 0 25px 80px rgba(19,48,66,.3); }.record-dialog::backdrop { background: rgba(17, 38, 52, .45); backdrop-filter: blur(2px); }.dialog-card { position: relative; display: grid; gap: 14px; padding: 30px; }.dialog-card h2 { font-size: 25px; }.dialog-card label:not(.check-label) { display: grid; gap: 6px; color: #5b6c74; font-size: 10px; font-weight: 700; }.dialog-card select, .dialog-card textarea { width: 100%; padding: 10px; border: 1px solid #dae2de; border-radius: 7px; outline-color: #76af9e; color: var(--ink); background: #fff; font-size: 12px; }.dialog-card textarea { min-height: 105px; resize: vertical; }.dialog-card .add-button { justify-self: start; }.dialog-close { position: absolute; top: 13px; right: 15px; display: grid; width: 27px; height: 27px; place-items: center; border: 0; border-radius: 50%; color: #4d626e; background: #f0f4f1; font-size: 20px; }.check-label { display: flex; gap: 8px; align-items: center; color: #61727a; font-size: 11px; }.toast { position: fixed; z-index: 10; bottom: 25px; left: 50%; min-width: 220px; padding: 12px 15px; border-radius: 8px; color: #f1f8f5; background: #173447; box-shadow: 0 8px 30px rgba(19,48,66,.22); font-size: 11px; font-weight: 600; text-align: center; opacity: 0; pointer-events: none; transform: translate(-50%, 15px); transition: .24s ease; }.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* Give spacious, high-resolution displays a proportionate working canvas rather
+   than leaving the interface as a small laptop-sized island in the corner. */
+@media (min-width: 1600px) {
+  :root { --sidebar-width: 292px; }
+  .sidebar { padding: 31px 19px 22px; }
+  .brand { margin: 0 14px 39px; font-size: 24px; }
+  .brand-mark { transform: scale(1.18); transform-origin: left center; }
+  .home-switcher { margin: 0 5px 33px; padding: 12px 11px; }
+  .home-switcher .home-icon { width: 31px; height: 31px; font-size: 19px; }
+  .home-switcher strong { font-size: 14px; }
+  .home-switcher small { font-size: 11px; }
+  .nav-list { gap: 5px; }
+  .nav-link { min-height: 50px; padding: 0 13px; font-size: 15px; }
+  .nav-icon { width: 20px; font-size: 21px; }
+  .nav-count { min-width: 23px; height: 23px; font-size: 11px; }
+  .profile { gap: 11px; margin-top: 17px; padding-top: 16px; }
+  .profile strong { font-size: 13px; }
+  .profile small { font-size: 10px; }
+  .avatar-small { width: 31px; height: 31px; font-size: 10px; }
+
+  .main-content { padding: 0 clamp(48px, 3vw, 78px) 64px; }
+  .topbar { min-height: 124px; }
+  .crumb span { margin-bottom: 7px; font-size: 13px; }
+  .crumb h1 { font-size: 29px; }
+  .top-actions { gap: 15px; }
+  .search { width: 290px; height: 44px; padding: 0 14px; }
+  .search input { font-size: 13px; }
+  .icon-button { width: 44px; height: 44px; font-size: 20px; }
+  .add-button, .handover-button { min-height: 44px; padding: 0 17px; border-radius: 9px; font-size: 13px; }
+
+  .view { max-width: min(1840px, 100%); padding-top: 45px; }
+  .welcome-row, .page-intro { margin-bottom: 31px; }
+  .eyebrow { margin-bottom: 9px; font-size: 12px; letter-spacing: 1.4px; }
+  h2 { font-size: 39px; letter-spacing: -1.2px; }
+  .lede { margin-top: 10px; font-size: 16px; }
+  .metrics-grid { gap: 18px; }
+  .metric-card { min-height: 190px; padding: 24px; border-radius: 15px; }
+  .metric-icon { top: 18px; right: 20px; width: 34px; height: 34px; border-radius: 10px; font-size: 20px; }
+  .metric-card p { max-width: 155px; margin-bottom: 23px; font-size: 14px; }
+  .metric-card strong { margin-bottom: 11px; font-size: 44px; }
+  .metric-card strong span { font-size: 27px; }
+  .metric-card small { font-size: 12px; }
+  .dashboard-grid { gap: 21px; margin-top: 21px; }
+  .panel { border-radius: 15px; }
+  .panel-head { padding: 25px 26px 20px; }
+  .panel-head h3 { font-size: 22px; }
+  .text-button, .wide-text-button { font-size: 12px; }
+  .handover-list, .task-list { padding-left: 26px; padding-right: 26px; }
+  .handover-item { grid-template-columns: 37px minmax(0, 1fr) 31px; gap: 13px; padding: 16px 0; }
+  .status-icon { width: 35px; height: 35px; border-radius: 10px; font-size: 16px; }
+  .item-line { gap: 9px; }
+  .item-line h4, .plan-list h4 { font-size: 14px; }
+  .handover-item p { margin-top: 5px; font-size: 12px; }
+  .tag, .pill { min-height: 22px; padding: 0 9px; font-size: 10px; }
+  .circle-button { width: 30px; height: 30px; font-size: 16px; }
+  .task-row { grid-template-columns: 21px minmax(0,1fr) auto; gap: 11px; padding: 14px 0; }
+  .checkbox { width: 19px; height: 19px; border-radius: 6px; }
+  .task-row strong { font-size: 12px; }
+  .task-row small, .task-time { font-size: 11px; }
+  .wide-text-button { width: calc(100% - 52px); margin: auto 26px 16px; padding-top: 14px; }
+  .timeline-panel { margin-top: 21px; }
+  .timeline { padding: 0 26px 14px; }
+  .timeline article { grid-template-columns: 35px minmax(0,1fr) auto; gap: 12px; padding: 14px 0; }
+  .timeline article p { font-size: 13px; }
+  .timeline article small, .timeline time { font-size: 11px; }
+  .avatar { width: 35px; height: 35px; font-size: 10px; }
+
+  .people-toolbar { gap: 11px; margin-bottom: 21px; }
+  .search.large { width: min(100%, 375px); height: 49px; }
+  .filter-button { min-height: 49px; padding: 0 16px; font-size: 13px; }
+  .people-grid { gap: 18px; }
+  .person-card { grid-template-columns: 50px minmax(0,1fr) auto; gap: 13px; padding: 21px; border-radius: 15px; }
+  .person-photo { width: 50px; height: 50px; font-size: 13px; }
+  .person-card h3 { font-size: 16px; }
+  .person-card p { font-size: 12px; }
+  .person-status { padding: 5px 8px; font-size: 10px; }
+  .person-footer { padding-top: 15px; font-size: 11px; }
+  .person-footer button { font-size: 12px; }
+  .plans-layout, .notes-layout, .report-grid { gap: 21px; }
+  .subtle { font-size: 12px; }
+  .plan-list { padding: 0 26px 13px; }
+  .plan-list article { grid-template-columns: 42px minmax(0,1fr) auto 30px; gap: 13px; padding: 17px 0; }
+  .plan-list p { font-size: 12px; }
+  .plan-icon { width: 40px; height: 40px; border-radius: 10px; font-size: 21px; }
+  .goal-card { min-height: 300px; padding: 31px; border-radius: 15px; }
+  .goal-card h3 { font-size: 27px; }
+  .goal-card p:not(.eyebrow) { font-size: 13px; }
+  .light-button { min-height: 41px; padding: 0 14px; font-size: 12px; }
+
+  .feed-filter, .task-tabs { gap: 9px; padding: 21px 26px 16px; }
+  .filter-chip { min-height: 35px; padding: 0 13px; font-size: 12px; }
+  .day-heading { margin: 0 26px 7px; font-size: 11px; }
+  .note-card { grid-template-columns: 38px minmax(0,1fr); gap: 13px; padding: 20px 26px; }
+  .note-top h3 { font-size: 14px; }
+  .note-top time, .note-card small { font-size: 11px; }
+  .note-card p { margin: 9px 0; font-size: 13px; }
+  .note-side { padding: 26px; }
+  .note-side h3 { font-size: 22px; }
+  .note-stat strong { font-size: 52px; }
+  .note-stat span, .note-breakdown p { font-size: 12px; }
+  .dot { width: 7px; height: 7px; }
+
+  .medication-panel { max-width: 1080px; }
+  .medication-header { padding: 26px; }
+  .medication-header h3 { font-size: 25px; }
+  .medication-header p { font-size: 12px; }
+  .med-clock { padding: 10px 14px; font-size: 14px; }
+  .mar-list { padding: 0 26px 10px; }
+  .mar-list article { grid-template-columns: 37px minmax(0,1fr) auto auto; gap: 13px; padding: 17px 0; }
+  .person-photo.tiny { width: 36px; height: 36px; font-size: 10px; }
+  .mar-list h4 { font-size: 13px; }
+  .mar-list p { font-size: 12px; }
+  .outline-button { min-height: 35px; padding: 0 13px; font-size: 12px; }
+  .full-task-panel { max-width: 1150px; }
+  .full-task-panel .task-row { padding: 20px 0; }
+  .full-task-panel .task-row strong { font-size: 13px; }
+  .full-task-panel .task-row small { font-size: 12px; }
+  .report-card { min-height: 250px; padding: 28px; }
+  .report-card h3 { margin-top: 24px; font-size: 50px; }
+  .report-card h3 span { font-size: 26px; }
+  .report-card > p:not(.eyebrow) { font-size: 13px; }
+  .report-card small { font-size: 11px; }
+  .progress { height: 8px; margin-top: 24px; }
+}
+
+@media (min-width: 2300px) {
+  :root { --sidebar-width: 340px; }
+  .main-content { padding-left: clamp(64px, 3.3vw, 112px); padding-right: clamp(64px, 3.3vw, 112px); }
+  .view { max-width: min(2300px, 100%); }
+  .sidebar { padding-top: 38px; }
+  .brand { font-size: 27px; }
+  .nav-link { min-height: 56px; font-size: 16px; }
+  .topbar { min-height: 140px; }
+  .crumb h1 { font-size: 33px; }
+  h2 { font-size: 44px; }
+  .lede { font-size: 18px; }
+  .metric-card { min-height: 212px; padding: 28px; }
+  .metric-card strong { font-size: 50px; }
+  .metric-card p { font-size: 15px; }
+  .panel-head h3 { font-size: 24px; }
+  .handover-item p, .note-card p, .timeline article p { font-size: 14px; }
+  .task-row strong, .person-card h3 { font-size: 14px; }
+  .task-row small, .task-time, .person-card p { font-size: 12px; }
+}
 
 @media (max-width: 1120px) { .main-content { padding: 0 24px 35px; }.metrics-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }.people-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 850px) { .sidebar { width: 220px; }.main-content { width: calc(100% - 220px); margin-left: 220px; }.top-actions .search { display: none; }.dashboard-grid, .plans-layout, .notes-layout { grid-template-columns: 1fr; }.goal-card { min-height: 210px; }.note-side { display: grid; grid-template-columns: auto 1fr; column-gap: 20px; align-items: center; }.note-side .eyebrow, .note-side h3 { grid-column: 1 / -1; }.note-stat { margin: 10px 0; }.note-breakdown { border-top: 0; } }
