@@ -16,7 +16,9 @@ GitHub will give you the public address within a minute or two.
 ## What is included
 
 - Interactive overview dashboard and shift handover
-- People, care plans, daily notes, medicines, tasks and reports views
+- A functional People directory: add, find, filter, open and edit a person; entries persist in that browser only
+- People is isolated in `people.js`, establishing a narrow service-user directory boundary for future modules
+- Demonstration views for care plans, daily notes, medicines, tasks and reports
 - Responsive layout for phones, tablets and desktops
 - Local-only prototype interactions: tabs, task completion, search, record capture dialog and status messages
 

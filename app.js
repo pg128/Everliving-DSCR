@@ -7,7 +7,6 @@
   const toast = document.querySelector('#toast');
   const dialog = document.querySelector('#record-dialog');
   const noteForm = document.querySelector('#note-form');
-  const peopleSearch = document.querySelector('[data-people-search]');
   let toastTimer;
 
   const headings = {
@@ -41,6 +40,8 @@
     appShell.classList.remove('menu-open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  window.Everchanging = { showToast, showView };
 
   navLinks.forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -90,30 +91,12 @@
     });
   });
 
-  function filterPeople(query) {
-    const normalized = query.trim().toLowerCase();
-    const cards = [...document.querySelectorAll('[data-person]')];
-    let visible = 0;
-    cards.forEach((card) => {
-      const match = card.dataset.person.toLowerCase().includes(normalized);
-      card.hidden = !match;
-      if (match) visible += 1;
-    });
-    return visible;
-  }
-
-  if (peopleSearch) {
-    peopleSearch.addEventListener('input', () => filterPeople(peopleSearch.value));
-  }
-
   document.querySelector('#global-search').addEventListener('keydown', (event) => {
     if (event.key !== 'Enter') return;
     const query = event.currentTarget.value;
     if (!query.trim()) return;
     showView('people');
-    peopleSearch.value = query;
-    const matches = filterPeople(query);
-    showToast(matches ? `${matches} person${matches === 1 ? '' : 's'} found.` : `No people match “${query}”.`);
+    window.dispatchEvent(new CustomEvent('everchanging:people-search', { detail: query }));
   });
 
   const initialView = window.location.hash.slice(1);

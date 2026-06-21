@@ -135,16 +135,11 @@
         </section>
 
         <section class="view" id="people" data-view-panel="people">
-          <div class="page-intro"><div><p class="eyebrow">People</p><h2>Everyone at Willow House</h2><p class="lede">A calm, current picture of each person’s care.</p></div><button class="add-button" type="button" data-toast="New person form opened."><span>+</span> Add person</button></div>
-          <div class="people-toolbar"><label class="search large"><span>⌕</span><input type="search" placeholder="Find a person" data-people-search /></label><button class="filter-button" type="button">⌄ All floors</button><button class="filter-button" type="button">⌄ All statuses</button></div>
-          <div class="people-grid" id="people-list">
-            <article class="person-card" data-person="Arthur Bennett"><span class="person-photo arthur">AB</span><div><h3>Arthur Bennett</h3><p>Willow · Room 12</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Next: GP follow-up</span><button type="button" data-toast="Opening Arthur Bennett’s record.">Open →</button></div></article>
-            <article class="person-card" data-person="Priya Shah"><span class="person-photo priya">PS</span><div><h3>Priya Shah</h3><p>Willow · Room 14</p></div><span class="person-status review">Review due</span><div class="person-footer"><span>Skin integrity review</span><button type="button" data-toast="Opening Priya Shah’s record.">Open →</button></div></article>
-            <article class="person-card" data-person="Rosemary Ellis"><span class="person-photo rosemary">RE</span><div><h3>Rosemary Ellis</h3><p>Maple · Room 03</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Family visit at 14:30</span><button type="button" data-toast="Opening Rosemary Ellis’s record.">Open →</button></div></article>
-            <article class="person-card" data-person="Douglas Ward"><span class="person-photo douglas">DW</span><div><h3>Douglas Ward</h3><p>Maple · Room 07</p></div><span class="person-status watch">Observe</span><div class="person-footer"><span>Fluid intake observation</span><button type="button" data-toast="Opening Douglas Ward’s record.">Open →</button></div></article>
-            <article class="person-card" data-person="Mabel Hart"><span class="person-photo mabel">MH</span><div><h3>Mabel Hart</h3><p>Willow · Room 09</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Next: activity at 11:30</span><button type="button" data-toast="Opening Mabel Hart’s record.">Open →</button></div></article>
-            <article class="person-card" data-person="George Kelly"><span class="person-photo george">GK</span><div><h3>George Kelly</h3><p>Maple · Room 11</p></div><span class="person-status settled">Settled</span><div class="person-footer"><span>Care plan reviewed 18 Jun</span><button type="button" data-toast="Opening George Kelly’s record.">Open →</button></div></article>
-          </div>
+          <div class="page-intro"><div><p class="eyebrow">People</p><h2>Everyone at Willow House</h2><p class="lede">A calm, current picture of each person’s care.</p></div><button class="add-button" id="add-person" type="button"><span>+</span> Add person</button></div>
+          <div class="people-toolbar"><label class="search large"><span>⌕</span><input id="people-search" type="search" placeholder="Find a person" data-people-search /></label><label class="filter-select"><span class="sr-only">Filter by floor</span><select id="people-floor-filter"><option value="all">All floors</option><option value="Willow">Willow</option><option value="Maple">Maple</option></select></label><label class="filter-select"><span class="sr-only">Filter by status</span><select id="people-status-filter"><option value="all">All statuses</option><option value="settled">Settled</option><option value="review">Review due</option><option value="watch">Observe</option></select></label></div>
+          <div class="people-status-row"><span id="people-total" aria-live="polite"></span><span class="device-note">Saved in this browser</span></div>
+          <div class="people-grid" id="people-list"></div>
+          <div class="empty-state" id="people-empty" hidden><span>⌕</span><h3>No one matches those filters</h3><p>Try a different name, floor or care status.</p><button class="outline-button" type="button" id="clear-people-filters">Clear filters</button></div>
         </section>
 
         <section class="view" id="care-plans" data-view-panel="care-plans">
@@ -187,7 +182,29 @@
         <button class="add-button" value="default">Save note</button>
       </form>
     </dialog>
+    <dialog class="record-dialog person-form-dialog" id="person-dialog">
+      <form class="dialog-card" id="person-form">
+        <button class="dialog-close" type="button" data-dialog-close="person-dialog" aria-label="Close">×</button>
+        <p class="eyebrow" id="person-form-label">New person</p>
+        <h2 id="person-form-title">Add a person</h2>
+        <p class="dialog-intro">This is kept separate from care, medication and reporting records for now.</p>
+        <input id="person-id" type="hidden" />
+        <div class="form-grid">
+          <label class="form-span">Full name<input id="person-name" required autocomplete="name" placeholder="e.g. Taylor Morgan" /></label>
+          <label>Floor<select id="person-floor" required><option value="Willow">Willow</option><option value="Maple">Maple</option></select></label>
+          <label>Room<input id="person-room" required placeholder="e.g. 16" /></label>
+          <label>Care status<select id="person-status" required><option value="settled">Settled</option><option value="review">Review due</option><option value="watch">Observe</option></select></label>
+          <label class="form-span">Today’s focus<input id="person-focus" required placeholder="e.g. Initial assessment to be completed" /></label>
+        </div>
+        <button class="add-button" type="submit" id="person-save">Save person</button>
+      </form>
+    </dialog>
+    <dialog class="person-profile-dialog" id="person-profile-dialog">
+      <button class="dialog-close" type="button" data-dialog-close="person-profile-dialog" aria-label="Close">×</button>
+      <div id="person-profile-content"></div>
+    </dialog>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
+    <script src="people.js"></script>
   </body>
 </html>
